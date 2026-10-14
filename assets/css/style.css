@@ -1,12 +1,47 @@
+/* =========================================
+   1. ПЕРЕМЕННЫЕ ТЕМ (CSS VARIABLES)
+   ========================================= */
+:root {
+  /* Ночная тема (по умолчанию) */
+  --bg-primary: #161616;
+  --bg-secondary: #1c1c1c;
+  --bg-card: rgba(0, 0, 0, 0.3);
+  --text-primary: #e4e4e4;
+  --text-secondary: #888888;
+  --text-muted: #6e6a6a;
+  --accent-color: #ff8e4c;
+  --text-on-accent: #000000;
+  --border-color: #444444;
+  --input-bg: transparent;
+}
+
+/* Дневная тема (переопределение переменных) */
+body.day-theme {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f4f4f4;
+  --bg-card: rgba(0, 0, 0, 0.05);
+  --text-primary: #161616;
+  --text-secondary: #555555;
+  --text-muted: #777777;
+  --accent-color: #ff8e4c; /* Оставляем фирменный оранжевый */
+  --text-on-accent: #000000;
+  --border-color: #dddddd;
+  --input-bg: #ffffff;
+}
+
+/* =========================================
+   2. БАЗОВЫЕ СТИЛИ
+   ========================================= */
 * {
   box-sizing: border-box;
 }
 
 body {
-  box-sizing: border-box;
-  background-color: #161616;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   margin: 0;
   padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Плавный переход темы */
 }
 
 @font-face {
@@ -58,14 +93,9 @@ body {
   font-display: swap;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-p {
+h1, h2, h3, h4, h5, p {
   font-family: Oswald, sans-serif;
-  color: #e4e4e4;
+  color: var(--text-primary);
   font-weight: 400;
 }
 
@@ -74,21 +104,20 @@ button {
   border: none;
   padding: 10px 20px;
   font-size: 20px;
-  background-color: #ff8e4c;
-  color: black;
+  background-color: var(--accent-color);
+  color: var(--text-on-accent);
   font-weight: 400;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
 }
 
-/* телефонная ВЕРСИЯ */
-
-/* ________________ */
-
-body {
-  box-sizing: border-box;
-  background-color: #161616;
-  margin: 0;
+button:hover {
+  opacity: 0.9;
 }
 
+/* =========================================
+   3. МОБИЛЬНАЯ ВЕРСИЯ
+   ========================================= */
 .mobile-only {
   display: block;
 }
@@ -101,7 +130,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: #161616;
+  background-color: var(--bg-primary);
 }
 
 .header button {
@@ -128,11 +157,11 @@ body {
 }
 
 .burger {
-  background-color: black;
+  background-color: var(--bg-primary);
 }
 
 .basket {
-  background-color: #ff8e4c;
+  background-color: var(--accent-color);
 }
 
 .header__img {
@@ -171,7 +200,7 @@ body {
 
 .breads-orange {
   width: 100%;
-  background-color: #ff8e4c;
+  background-color: var(--accent-color);
   padding-top: 150px;
   margin-bottom: -4px;
   display: flex;
@@ -185,13 +214,13 @@ body {
 }
 
 .breds-title {
-  color: black;
+  color: var(--text-on-accent);
   font-weight: 700;
 }
 
 .button-on-orange {
-  background-color: black;
-  color: #e4e4e4;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 .breads-orange-img {
@@ -202,19 +231,20 @@ body {
   display: flex;
   flex-direction: column;
   align-items: start;
-  background-color: #161616;
+  background-color: var(--bg-primary);
   padding: 11px 30px 20px 30px;
 }
 
 .name-bread {
   font-size: 32px;
-  color: white;
+  color: var(--text-primary);
   margin-bottom: -30px;
 }
 
 .quote {
   font-size: 32px;
   font-weight: 200;
+  color: var(--text-secondary);
 }
 
 .background-flour {
@@ -226,7 +256,7 @@ body {
 }
 
 .cooking_method_orange {
-  background-color: #ff8e4c;
+  background-color: var(--accent-color);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -240,19 +270,19 @@ body {
   justify-content: center;
   align-items: center;
   padding: 37px 17px 17px 17px;
-  background-color: #161616;
+  background-color: var(--bg-primary);
   width: 80%;
   z-index: 1;
 }
 
-.promotion{
+.promotion {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 40px;
 }
 
-.promotion img{
+.promotion img {
   width: 100%;
 }
 
@@ -262,11 +292,13 @@ body {
   margin-bottom: -10px;
   font-size: 32px;
   line-height: 1.3em;
+  color: var(--text-on-accent);
 }
 
 .orange__content-text {
   font-size: 24px;
   line-height: 1.3em;
+  color: var(--text-on-accent);
 }
 
 .sensations-bread-title {
@@ -277,18 +309,15 @@ body {
   padding-right: 30px;
 }
 
-.item-name{
-  color: #161616;
+.item-name {
+  color: var(--text-primary);
 }
 
 .sensations-bread-title h2 {
-  color: #161616;
+  color: var(--text-primary);
   font-weight: 500;
   margin-top: 10px;
   margin-bottom: 12px;
-}
-
-.sensations-bread-photo-img {
 }
 
 .scroll-list-bread2 {
@@ -305,8 +334,8 @@ body {
 }
 
 .sensations-bread_content {
-  background-color: #161616;
-  color: #e4e4e4;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -327,6 +356,7 @@ body {
   font-weight: 400;
   font-size: 24px;
   line-height: 1.3em;
+  color: var(--text-secondary);
 }
 
 .cooking-methods {
@@ -346,6 +376,7 @@ body {
   font-family: PlayfairDisplay;
   font-size: 32px;
   font-weight: 400;
+  color: var(--text-primary);
 }
 
 .appeal {
@@ -379,11 +410,13 @@ body {
   margin-bottom: -10px;
   font-size: 32px;
   line-height: 1.08em;
+  color: var(--text-primary);
 }
 
 .appeal-content-text {
   font-size: 24px;
   font-weight: 400;
+  color: var(--text-secondary);
 }
 
 .location {
@@ -396,7 +429,7 @@ body {
 .location-title {
   width: 100%;
   height: 15vh;
-  background-color: #e4e4e4;
+  background-color: var(--bg-secondary);
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -405,7 +438,7 @@ body {
 }
 
 .location-title-h {
-  color: #161616;
+  color: var(--text-primary);
   font-size: 36px;
   font-family: PlayfairDisplay;
   text-align: center;
@@ -421,12 +454,14 @@ body {
 .answers-to-questions_content-title {
   text-align: center;
 }
+
 .answers-to-questions_content-title h3 {
   font-size: 48px;
   font-family: PlayfairDisplay;
   justify-content: center;
   align-items: center;
   font-weight: 600;
+  color: var(--text-primary);
 }
 
 .accordion__title {
@@ -438,21 +473,23 @@ body {
 }
 
 .accordion__item_first {
-  background-color: #1c1c1c;
+  background-color: var(--bg-secondary);
 }
 
 .accordion__title p {
   font-size: 24px;
+  color: var(--text-primary);
 }
 
 .accordion__content p {
   font-weight: 200;
   padding-left: 20px;
   padding-right: 20px;
+  color: var(--text-secondary);
 }
 
 footer {
-  background-color: #161616;
+  background-color: var(--bg-primary);
 }
 
 .social-media {
@@ -460,7 +497,6 @@ footer {
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
-  flex-direction: row;
 }
 
 .social-media_element {
@@ -476,7 +512,7 @@ footer {
 }
 
 .social-media_element-second {
-  background-color: #ff8e4c;
+  background-color: var(--accent-color);
 }
 
 .others {
@@ -502,29 +538,33 @@ footer {
 }
 
 .delivery-phone-note p {
-  color: #6e6a6a;
+  color: var(--text-muted);
 }
 
 .delivery-phone-title {
   font-size: 20px;
   font-weight: 400;
+  color: var(--text-primary);
 }
 
 .delivery-phone-number {
   font-size: 16px;
   font-weight: 400;
-  color: #fff;
+  color: var(--text-primary);
   font-family: Oswald;
 }
 
 .delivery-phone-note {
   font-size: 16px;
+  color: var(--text-secondary);
 }
 
-/* каталог */
-
+/* =========================================
+   4. СТИЛИ ДЛЯ ДРУГИХ СТРАНИЦ (Каталог, About, Контакты, Login)
+   ========================================= */
 .catalog_body {
   padding: 0;
+  /* Градиент оставлен как есть, так как это специфика страницы каталога */
   background: linear-gradient(135deg, #054c76 0%, #0c192a 34%, #471c3a 100%);
 }
 
@@ -535,6 +575,7 @@ footer {
 .catalog-title {
   font-size: 32px;
   text-align: center;
+  color: var(--text-primary);
 }
 
 .catalog-content {
@@ -551,16 +592,13 @@ footer {
 }
 
 .product-card {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: var(--bg-card);
   width: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-bottom: 6px;
-}
-
-.image_card {
 }
 
 .image_card_img {
@@ -574,9 +612,8 @@ footer {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: var(--text-primary);
 }
-
-/* ABOUT */
 
 .about {
   width: 100%;
@@ -591,24 +628,23 @@ footer {
 
 .about_title {
   font-size: 46px;
+  color: var(--text-primary);
 }
 
 .about-middle_left_text {
   padding: 20px;
+  background-color: var(--accent-color);
 }
 
 .about-middle_left_text-h {
   font-size: 33px;
   font-weight: 600;
+  color: var(--text-on-accent);
 }
 
 .about-middle_left_text-p p {
   font-size: 24px;
-  color: black;
-}
-
-.about-middle_left_text {
-  background-color: #ff8e4c;
+  color: var(--text-on-accent);
 }
 
 .about-middle_right_text {
@@ -618,13 +654,7 @@ footer {
 .about-middle_tight_text-h {
   font-size: 32px;
   font-weight: 700;
-}
-
-.about-middle_left_text-h h5 {
-  color: black;
-  font-size: 32px;
-  line-height: 1em;
-  font-weight: 700;
+  color: var(--text-primary);
 }
 
 .aboute-quote img {
@@ -641,9 +671,8 @@ footer {
 .aboute-quote_quote h5 {
   font-family: PlayfairDisplay;
   font-size: 20px;
+  color: var(--text-primary);
 }
-
-/* контакты */
 
 .contacts-table {
   width: 100%;
@@ -659,17 +688,17 @@ footer {
 }
 
 .contacts-table td {
-  background: #1e1e1e;
-  border: 1px solid rgb(255, 142, 76);
+  background: var(--bg-secondary);
+  border: 1px solid var(--accent-color);
   padding: 28px 24px;
-  color: #e4e4e4;
+  color: var(--text-primary);
   vertical-align: top;
   position: relative;
   overflow: hidden;
 }
 
 .contacts-table h5 {
-  color: #ff8e4c;
+  color: var(--accent-color);
   font-size: 18px;
   font-weight: 600;
   margin: 0 0 14px;
@@ -682,7 +711,7 @@ footer {
   margin: 0 0 10px;
   font-size: 15px;
   line-height: 1.5;
-  color: #cccccc;
+  color: var(--text-secondary);
 }
 
 .contacts-table p:last-child {
@@ -695,25 +724,27 @@ footer {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: linear-gradient(145deg, #1e1e1e, #222222);
+  background: linear-gradient(145deg, var(--bg-secondary), #222222);
 }
 
 .td-action p {
   font-size: 16px;
-  color: #fff;
+  color: var(--text-primary);
   margin-bottom: 16px;
 }
-.contacts-img img{
+
+.contacts-img img {
   width: 100%;
 }
 
-
 .contacts-img h1 {
   text-align: center;
+  color: var(--text-primary);
 }
+
 .contacts-table button {
-  background: #ff8e4c;
-  color: #000;
+  background: var(--accent-color);
+  color: var(--text-on-accent);
   border: none;
   padding: 14px 32px;
   font-size: 14px;
@@ -723,8 +754,6 @@ footer {
   border-radius: 8px;
   cursor: pointer;
 }
-
-/* where */
 
 .city-card {
   flex-direction: column !important;
@@ -746,6 +775,7 @@ footer {
 .city-name {
   font-size: 36px;
   margin-bottom: 20px;
+  color: var(--text-primary);
 }
 
 .city-btn {
@@ -758,29 +788,27 @@ footer {
   height: 350px;
 }
 
-/* login */
-
 .registration-section {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 80vh;
-  background-color: #161616;
+  background-color: var(--bg-primary);
   padding: 40px 20px;
 }
 
 .registration-card {
   width: 100%;
   max-width: 500px;
-  background-color: #161616;
-  border: 2px solid #e4e4e4;
+  background-color: var(--bg-primary);
+  border: 2px solid var(--border-color);
   border-radius: 0;
   padding: 40px;
 }
 
 .reg-title {
   font-family: "PlayfairDisplay", serif;
-  color: #fff;
+  color: var(--text-primary);
   font-size: 36px;
   margin: 0 0 30px;
   text-align: center;
@@ -796,7 +824,7 @@ footer {
 
 .input-group label {
   font-family: "Oswald", sans-serif;
-  color: #888;
+  color: var(--text-secondary);
   font-size: 14px;
   text-transform: uppercase;
   margin-bottom: 8px;
@@ -806,26 +834,26 @@ footer {
 .input-group input {
   width: 100%;
   padding: 16px;
-  background-color: transparent;
-  border: 1px solid #444;
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
   border-radius: 0;
-  color: #fff;
+  color: var(--text-primary);
   font-family: "Oswald", sans-serif;
   font-size: 18px;
   outline: none;
   box-shadow: none;
-  transition: none;
+  transition: border-color 0.2s ease;
 }
 
 .input-group input:focus {
-  border-color: #ff8e4c;
+  border-color: var(--accent-color);
 }
 
 .reg-btn {
   width: 100%;
   padding: 18px;
-  background-color: #ff8e4c;
-  color: #000;
+  background-color: var(--accent-color);
+  color: var(--text-on-accent);
   border: none;
   border-radius: 0;
   font-family: "Oswald", sans-serif;
@@ -842,25 +870,24 @@ footer {
 .reg-footer {
   text-align: center;
   font-family: "Oswald", sans-serif;
-  color: #e4e4e4;
+  color: var(--text-primary);
   font-size: 16px;
 }
 
 .login-link {
-  color: #ff8e4c;
+  color: var(--accent-color);
   text-decoration: none;
   margin-left: 5px;
-  text-decoration: none;
 }
 
 /* =========================================
-   1. БАЗОВЫЕ СТИЛИ (МОБИЛЬНАЯ ВЕРСИЯ)
+   5. ОФОРМЛЕНИЕ ЗАКАЗА (Checkout)
    ========================================= */
 .checkout-section {
-  background-color: #f0f0f0;
+  background-color: var(--bg-secondary);
   padding: 30px 16px;
   font-family: "Oswald", sans-serif;
-  color: #111;
+  color: var(--text-primary);
 }
 
 .checkout-wrapper {
@@ -868,7 +895,6 @@ footer {
   margin: 0 auto;
 }
 
-/* --- ЛЕВАЯ КОЛОНКА (МОБИЛКА) --- */
 .checkout-left {
   margin-bottom: 40px;
 }
@@ -877,13 +903,13 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--border-color);
   padding-bottom: 15px;
   margin-bottom: 20px;
 }
 
 .checkout-title {
-  color: #161616;
+  color: var(--text-primary);
   font-size: 28px;
   text-transform: uppercase;
   margin: 0;
@@ -893,10 +919,11 @@ footer {
 .checkout-count {
   font-size: 18px;
   text-transform: uppercase;
+  color: var(--text-secondary);
 }
 
 .section-subtitle {
-  color: #161616;
+  color: var(--text-primary);
   font-size: 20px;
   text-transform: uppercase;
   margin: 0 0 15px;
@@ -910,17 +937,18 @@ footer {
 }
 
 .order-item {
-  background: #e6e6e6;
+  background: var(--bg-primary);
   padding: 15px;
   margin-bottom: 15px;
   display: flex;
   flex-direction: column;
   gap: 15px;
+  border: 1px solid var(--border-color);
 }
 
 .item-img .img-placeholder {
   width: 100%;
-  background-color: #ccc;
+  background-color: var(--bg-secondary);
 }
 
 .item-name {
@@ -928,13 +956,14 @@ footer {
   text-transform: uppercase;
   margin: 0 0 8px;
   line-height: 1.2;
+  color: var(--text-primary);
 }
 
 .item-desc {
   font-size: 13px;
   line-height: 1.4;
   margin: 0;
-  color: #333;
+  color: var(--text-secondary);
 }
 
 .item-controls {
@@ -949,8 +978,8 @@ footer {
   display: flex;
   width: 100%;
   height: 36px;
-  border: 1px solid #ccc;
-  background: #fff;
+  border: 1px solid var(--border-color);
+  background: var(--input-bg);
 }
 
 .qty-btn {
@@ -961,20 +990,21 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
 }
 
-.qty-minus {
-  background: #ccc;
-}
 .qty-plus {
-  background: #ff8e4c;
-  color: #fff;
+  background: var(--accent-color);
+  color: var(--text-on-accent);
 }
+
 .qty-value {
   flex: 1;
   text-align: center;
   line-height: 36px;
   font-size: 14px;
+  color: var(--text-primary);
 }
 
 .remove-btn {
@@ -984,7 +1014,7 @@ footer {
   font-size: 14px;
   text-transform: uppercase;
   cursor: pointer;
-  color: #333;
+  color: var(--text-secondary);
   text-align: left;
 }
 
@@ -994,11 +1024,11 @@ footer {
   text-transform: uppercase;
   text-align: right;
   width: 100%;
+  color: var(--text-primary);
 }
 
-/* --- ПРАВАЯ КОЛОНКА (МОБИЛКА) --- */
 .form-top-label {
-  color: #161616;
+  color: var(--text-secondary);
   font-size: 12px;
   text-transform: uppercase;
   margin: 0 0 20px;
@@ -1015,6 +1045,7 @@ footer {
   text-transform: uppercase;
   font-size: 16px;
   margin-bottom: 10px;
+  color: var(--text-primary);
 }
 
 .form-input,
@@ -1022,18 +1053,18 @@ footer {
 .form-textarea {
   width: 100%;
   border: none;
-  border-bottom: 1px solid #111;
+  border-bottom: 1px solid var(--text-primary);
   background: transparent;
   padding: 8px 0;
   font-family: "Oswald", sans-serif;
   font-size: 16px;
-  color: #111;
+  color: var(--text-primary);
   outline: none;
   margin-bottom: 12px;
 }
 
 .form-input::placeholder {
-  color: #666;
+  color: var(--text-muted);
   text-transform: none;
 }
 
@@ -1055,11 +1086,12 @@ footer {
 .form-select {
   appearance: none;
   -webkit-appearance: none;
-  background: #ccc;
+  background: var(--bg-secondary);
   padding: 10px;
   text-transform: uppercase;
   font-weight: 700;
-  border: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
 }
 
 .select-arrow {
@@ -1068,28 +1100,29 @@ footer {
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
+  color: var(--text-primary);
 }
 
 .legal-text {
   font-size: 9px;
   line-height: 1.3;
-  color: #111;
+  color: var(--text-secondary);
   margin: 10px 0 15px;
   text-align: justify;
 }
 
 .form-textarea {
   min-height: 80px;
-  background: #222;
-  color: #fff;
-  border: none;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
   padding: 15px;
   resize: none;
   margin-top: 10px;
 }
 
 .form-textarea::placeholder {
-  color: #fff;
+  color: var(--text-muted);
 }
 
 .totals-block {
@@ -1097,6 +1130,7 @@ footer {
   font-weight: 700;
   text-transform: uppercase;
   font-size: 14px;
+  color: var(--text-primary);
 }
 
 .total-row {
@@ -1109,7 +1143,7 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid var(--border-color);
   padding-top: 20px;
   margin-top: 20px;
 }
@@ -1117,12 +1151,13 @@ footer {
 .final-price {
   font-size: 18px;
   font-weight: 700;
+  color: var(--text-primary);
 }
 
 .submit-btn {
   width: 100%;
-  background: #ff8e4c;
-  color: #111;
+  background: var(--accent-color);
+  color: var(--text-on-accent);
   border: none;
   padding: 15px;
   font-family: "Oswald", sans-serif;
@@ -1132,6 +1167,9 @@ footer {
   cursor: pointer;
 }
 
+/* =========================================
+   6. ДЕСКТОПНАЯ ВЕРСИЯ (min-width: 1024px)
+   ========================================= */
 @media (min-width: 1024px) {
   body {
     padding: 0 100px;
@@ -1139,15 +1177,12 @@ footer {
 
   a {
     text-transform: uppercase;
+    color: var(--text-primary);
+    text-decoration: none;
   }
 
   p {
-    color: #e4e4e4;
-  }
-
-  a {
-    color: white;
-    text-decoration: none;
+    color: var(--text-primary);
   }
 
   .cover-button {
@@ -1173,11 +1208,7 @@ footer {
     justify-content: start;
   }
 
-  .burger {
-    display: none;
-  }
-
-  .basket {
+  .burger, .basket {
     display: none;
   }
 
@@ -1190,26 +1221,24 @@ footer {
     gap: 25px;
   }
 
-  .menu-element {
-  }
-
   .menu-element-link {
     font-family: Oswald;
     font-weight: 400;
     font-size: 20px;
+    color: var(--text-primary);
   }
 
   .action-link {
     width: 90px;
     height: 80px;
-    background-color: #ff8e4c;
+    background-color: var(--accent-color);
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
   .menu-element_action a {
-    color: black;
+    color: var(--text-on-accent);
   }
 
   .cover {
@@ -1227,20 +1256,24 @@ footer {
     min-height: 480px;
     min-width: 28%;
     padding: 10px;
-    background-color: #b0593b;
+    background-color: #b0593b; /* Оставляем как акцентный блок дизайна */
+  }
+
+  .cover-content h1, .cover-content p {
+    color: #ffffff; /* Текст внутри этого блока всегда белый */
   }
 
   .technologies {
-    background-color: #161616;
+    background-color: var(--bg-primary);
     padding: 16px 24px;
   }
 
   .technologies p {
     font-size: 14px;
+    color: var(--text-primary);
   }
 
-  .cover,
-  .breads {
+  .cover, .breads {
     overflow: visible !important;
   }
 
@@ -1285,6 +1318,7 @@ footer {
   .preview_title_h {
     font-size: 64px;
     font-family: PlayfairDisplay;
+    color: var(--text-primary);
   }
 
   .preview_content {
@@ -1299,10 +1333,12 @@ footer {
   .name-bread {
     font-size: 36px;
     width: 65%;
+    color: var(--text-primary);
   }
 
   .quote {
     margin-left: 40%;
+    color: var(--text-secondary);
   }
 
   .preview_content_left button {
@@ -1333,12 +1369,14 @@ footer {
     font-size: 32px;
     font-family: PlayfairDisplay;
     font-weight: 700;
+    color: var(--text-primary);
   }
 
   .cooking_method_right_text {
     font-size: 24px;
     font-weight: 400;
     line-height: 1.3em;
+    color: var(--text-secondary);
   }
 
   .sensations-bread_title {
@@ -1352,6 +1390,7 @@ footer {
     font-size: 48px;
     width: 70%;
     text-align: center;
+    color: var(--text-primary);
   }
 
   .sensations-bread_title_btn {
@@ -1396,11 +1435,13 @@ footer {
     font-family: PlayfairDisplay;
     font-size: 24px;
     line-height: 1.3em;
+    color: var(--text-primary);
   }
 
   .sensations-bread_content-text {
     line-height: 1.3em;
     font-size: 24px;
+    color: var(--text-secondary);
   }
 
   .cooking-methods_row {
@@ -1438,17 +1479,15 @@ footer {
 
   .appeal-content-text {
     line-height: 1.3em;
-  }
-
-  .location {
+    color: var(--text-secondary);
   }
 
   .location-title {
-    background-color: #161616;
+    background-color: var(--bg-primary);
   }
 
   .location-title-h {
-    color: white;
+    color: var(--text-primary);
     font-family: PlayfairDisplay;
     font-size: 64px;
     white-space: nowrap;
@@ -1493,6 +1532,11 @@ footer {
   .mini-menu_list_element-link {
     font-family: Oswald;
     font-weight: 200;
+    color: var(--text-secondary);
+  }
+
+  .mini-menu_list_element-link:hover {
+    color: var(--accent-color);
   }
 
   .applied {
@@ -1512,20 +1556,22 @@ footer {
   .number-phone_list_item_title {
     font-size: 14px;
     margin-bottom: -10px;
+    color: var(--text-secondary);
   }
 
   .delivery-phone-number {
     font-size: 14px;
+    color: var(--text-primary);
   }
 
   .number-phone_list_item_additionally p {
-    color: #6e6a6a;
+    color: var(--text-muted);
     margin-top: -1px;
     font-size: 11px;
   }
 
   .applied_personal-data p {
-    color: #ff8e4c;
+    color: var(--accent-color);
     margin-left: 40px;
     margin-top: -20px;
   }
@@ -1545,11 +1591,10 @@ footer {
     align-items: center;
     width: 45px;
     height: 45px;
-    background-color: #e4e4e4;
+    background-color: var(--bg-secondary);
     margin-bottom: 5px;
+    border: 1px solid var(--border-color);
   }
-
-  /* каталог */
 
   .catalog-main {
     padding: 0 100px;
@@ -1563,8 +1608,6 @@ footer {
     margin-left: 40px;
     margin-top: 20px;
   }
-
-  /* about */
 
   .about-middle {
     display: flex;
@@ -1596,8 +1639,8 @@ footer {
   }
 
   .about-middle_left_text {
-    background-color: #161616;
-    color: #000000;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
     padding: 30px;
     display: flex;
     flex-direction: column;
@@ -1609,19 +1652,19 @@ footer {
     font-size: 24px;
     line-height: 1.2;
     margin: 0 0 16px;
-    color: #fff;
+    color: var(--text-primary);
   }
 
   .about-middle_left_text-p p {
     font-size: 16px;
     line-height: 1.5;
-    color: #ccc;
+    color: var(--text-secondary);
     margin: 0;
   }
 
   .about-middle_right_text {
-    background-color: #ff8e4c;
-    color: #000000;
+    background-color: var(--accent-color);
+    color: var(--text-on-accent);
     padding: 30px;
     display: flex;
     flex-direction: column;
@@ -1634,14 +1677,14 @@ footer {
     line-height: 1.2;
     margin: 0 0 16px;
     font-weight: 700;
+    color: var(--text-on-accent);
   }
 
   .about-middle_right_text-p p {
     font-size: 16px;
     margin: 0;
+    color: var(--text-on-accent);
   }
-
-  /* where */
 
   .where-section {
     width: 100%;
@@ -1655,8 +1698,8 @@ footer {
 
   .city-card {
     display: flex;
-    background-color: #1a1a1a;
-    border: 1px solid #333;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
     border-radius: 6px;
     overflow: hidden;
     height: 500px;
@@ -1669,14 +1712,14 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: #161616;
+    background: var(--bg-primary);
     position: relative;
   }
 
   .city-name {
     font-family: "PlayfairDisplay", serif;
     font-size: 48px;
-    color: #fff;
+    color: var(--text-primary);
     margin: 0 0 30px;
     line-height: 1;
   }
@@ -1685,17 +1728,17 @@ footer {
     margin: 0 0 12px;
     font-family: "Oswald", sans-serif;
     font-size: 18px;
-    color: #a0a0a0;
+    color: var(--text-secondary);
   }
 
   .city-details .address {
-    color: #fff;
+    color: var(--text-primary);
     font-size: 20px;
     font-weight: 500;
   }
 
   .city-details .phone {
-    color: #ff8e4c;
+    color: var(--accent-color);
     font-weight: 700;
     margin-top: 10px;
   }
@@ -1705,18 +1748,23 @@ footer {
     align-self: flex-start;
     padding: 14px 28px;
     background: transparent;
-    border: 2px solid #ff8e4c;
-    color: #ff8e4c;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
     font-family: "Oswald", sans-serif;
     font-size: 16px;
     text-transform: uppercase;
     cursor: pointer;
   }
 
+  .city-btn:hover {
+    background: var(--accent-color);
+    color: var(--text-on-accent);
+  }
+
   .city-map {
     flex: 1;
     position: relative;
-    background-color: #222;
+    background-color: var(--bg-secondary);
   }
 
   .city-map iframe {
@@ -1725,8 +1773,6 @@ footer {
     border: none;
     display: block;
   }
-
-  /* форма заказа */
 
   .checkout-section {
     padding: 40px 100px;

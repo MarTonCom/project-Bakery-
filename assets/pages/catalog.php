@@ -15,26 +15,26 @@
         <div class="desktop-only">
           <ul class="menu-list">
             <li class="menu-element">
-              <a class="menu-element-link" href="/index.html">Главная</a>
+              <a class="menu-element-link" href="/index.php">Главная</a>
             </li>
             <li class="menu-element">
-              <a class="menu-element-link" href="./catalog.html">Каталог</a>
+              <a class="menu-element-link" href="catalog.php">Каталог</a>
             </li>
             <li class="menu-element">
-              <a class="menu-element-link" href="./about.html">О пекарне</a>
+              <a class="menu-element-link" href="about.php">О пекарне</a>
             </li>
             <li class="menu-element">
-              <a class="menu-element-link" href="./contacts.html">Контакты</a>
+              <a class="menu-element-link" href="contacts.php">Контакты</a>
             </li>
             <li class="menu-element">
-              <a class="menu-element-link" href="./where.html">Где купить</a>
+              <a class="menu-element-link" href="where.php">Где купить</a>
             </li>
             <li class="menu-element">
-              <a class="menu-element-link" href="./login.html">Аккаунт</a>
+              <a class="menu-element-link" href="login.php">Аккаунт</a>
             </li>
             <li class="menu-element menu-element_action">
               <div class="action-link">
-                <a class="menu-element-link" href="./services.html">Купить</a>
+                <a class="menu-element-link" href="services.php">Купить</a>
               </div>
             </li>
           </ul>
@@ -65,7 +65,7 @@
 
 
 
-        <a class="card-link" href="./services.html">
+        <a class="card-link" href="services.php">
           <div class="product-card">
             <div class="image_card">
               <img class="image_card_img" src="../images/breads/bread1.jpg" alt="">
