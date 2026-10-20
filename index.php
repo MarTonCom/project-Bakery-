@@ -11,7 +11,9 @@ if ($hour >= 8 && $hour < 20) {
 } else {
     $theme = 'night-theme';
 }
+
 ?>
+
 <html lang="ru">
 <head>
     <meta charset="UTF-8" />
@@ -31,7 +33,7 @@ if ($hour >= 8 && $hour < 20) {
                     <a class="menu-element-link" href="index.php">Главная</a>
                 </li>
                 <li class="menu-element">
-                    <a class="assets/pages/catalog.php">Каталог</a>
+                    <a class="menu-element-link" href="assets/pages/catalog.php">Каталог</a>
                 </li>
                 <li class="menu-element">
                     <a class="menu-element-link" href="assets/pages/about.php">О пекарне</a>
